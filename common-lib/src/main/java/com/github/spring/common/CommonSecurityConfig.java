@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
+import com.github.spring.common.filter.FilterConfiguration;
+
 /**
  * This class defines all the security configurations.
  * 
@@ -24,7 +26,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @Configuration
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@Import({Securityproperties.class, CustomWebMvcConfigurerAdapter.class})
+@Import({Securityproperties.class, CustomWebMvcConfigurerAdapter.class, FilterConfiguration.class})
 public class CommonSecurityConfig {
 
 }

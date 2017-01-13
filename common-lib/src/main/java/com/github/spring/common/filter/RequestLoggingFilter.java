@@ -18,12 +18,11 @@ public class RequestLoggingFilter extends AbstractFilter {
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
-        LOG.info("request received {} {}", request.getMethod(), request.getRequestURI());
         try {
             chain.doFilter(request, response);
         }
         finally {
-            LOG.info("response returned {} {} {}", request.getMethod(), request.getRequestURI(), response.getStatus());
+            LOG.info("request {} {} {}", request.getMethod(), request.getRequestURI(), response.getStatus());
         }
     }
 }
