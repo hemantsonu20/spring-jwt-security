@@ -12,7 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
  *
  */
 @Configuration
-@EnableWebSecurity
 public class CustomWebMvcConfigurerAdapter extends WebMvcConfigurerAdapter {
 
 }
