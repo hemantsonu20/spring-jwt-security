@@ -1,8 +1,13 @@
 package com.github.spring.user.controller;
 
+import javax.validation.constraints.NotNull;
+
 public class LoginInfo {
 
+    @NotNull
     private String username;
+    
+    @NotNull
     private String password;
 
     public String getUsername() {

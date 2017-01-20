@@ -1,4 +1,4 @@
-package com.github.spring.common.token;
+package com.github.spring.common;
 
 
 public enum Role {
