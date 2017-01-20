@@ -7,6 +7,11 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import org.springframework.context.annotation.Import;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
+
+import com.github.spring.common.config.CustomJwtTokenConverter;
+import com.github.spring.common.config.Securityproperties;
 
 /**
  * A convenient annotation to be added on main class in any spring boot
@@ -21,7 +26,9 @@ import org.springframework.context.annotation.Import;
 @Target(value = { ElementType.TYPE })
 @Retention(value = RetentionPolicy.RUNTIME)
 @Documented
-@Import(value = { CommonSecurityConfig.class })
+@EnableResourceServer
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+@Import(value = { Securityproperties.class, CustomJwtTokenConverter.class })
 public @interface EnableSecurityFeature {
 
 }
