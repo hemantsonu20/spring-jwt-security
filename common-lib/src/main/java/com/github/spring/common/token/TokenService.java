@@ -5,17 +5,15 @@ import org.springframework.security.jwt.Jwt;
 import org.springframework.security.jwt.JwtHelper;
 import org.springframework.security.jwt.crypto.sign.InvalidSignatureException;
 import org.springframework.security.jwt.crypto.sign.MacSigner;
-import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.spring.common.WebServiceException;
 import com.github.spring.common.UserInfo;
+import com.github.spring.common.WebServiceException;
 
-@Component
 public class TokenService {
 
     private ObjectMapper mapper = new ObjectMapper();
-
+    
     public String encodeToken(UserInfo info, String jwtSecret) {
 
         try {

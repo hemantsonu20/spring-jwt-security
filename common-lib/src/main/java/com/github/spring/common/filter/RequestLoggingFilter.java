@@ -14,14 +14,26 @@ public class RequestLoggingFilter extends AbstractFilter {
 
     private static final Logger LOG = LoggerFactory.getLogger(RequestLoggingFilter.class);
 
+    private boolean isStackTraceEnabled;
+
+    RequestLoggingFilter(boolean isStackTraceEnabled) {
+
+        this.isStackTraceEnabled = isStackTraceEnabled;
+    }
+
     @Override
     public void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws IOException, ServletException {
 
         try {
             chain.doFilter(request, response);
-        }
-        finally {
+        } catch (Exception e) {
+            if (isStackTraceEnabled) {
+                LOG.error("exception occurred", e);
+            }
+            throw e;
+
+        } finally {
             LOG.info("request {} {} {}", request.getMethod(), request.getRequestURI(), response.getStatus());
         }
     }

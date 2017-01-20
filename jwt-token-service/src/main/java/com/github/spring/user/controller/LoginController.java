@@ -4,7 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.oauth2.common.exceptions.UnauthorizedUserException;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.spring.common.Role;
 import com.github.spring.common.UserInfo;
+import com.github.spring.common.WebServiceException;
 import com.github.spring.common.token.TokenService;
 
 @RestController
@@ -21,13 +22,13 @@ public class LoginController {
     @Autowired
     private TokenService tokenService;
     
-    @Value("jwt.token.key")
+    @Value("${jwt.token.key}")
     private String jwtSecret;
     
-    @Value("jwt.user.name")
+    @Value("${jwt.user.name}")
     private String username;
     
-    @Value("jwt.user.password")
+    @Value("${jwt.user.password}")
     private String password;
     
 
@@ -44,6 +45,6 @@ public class LoginController {
          
             return new UserInfo().setId(username).setName(username).setUserRole(Role.ADMIN);
         }
-        throw new UnauthorizedUserException("username or password not valid");
+        throw new WebServiceException(HttpStatus.UNAUTHORIZED, "username or password not valid");
     }
 }

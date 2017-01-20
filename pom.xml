@@ -51,6 +51,7 @@
 	<modules>
 		<module>resource-service</module>
 		<module>common-lib</module>
+		<module>jwt-token-service</module>
 	</modules>
 
 </project>

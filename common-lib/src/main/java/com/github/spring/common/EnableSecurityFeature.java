@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 
 import com.github.spring.common.config.CustomJwtTokenConverter;
 import com.github.spring.common.config.Securityproperties;
+import com.github.spring.common.filter.FilterConfiguration;
 
 /**
  * A convenient annotation to be added on main class in any spring boot
@@ -28,7 +29,7 @@ import com.github.spring.common.config.Securityproperties;
 @Documented
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@Import(value = { Securityproperties.class, CustomJwtTokenConverter.class })
+@Import(value = { Securityproperties.class, CustomJwtTokenConverter.class, FilterConfiguration.class })
 public @interface EnableSecurityFeature {
 
 }
