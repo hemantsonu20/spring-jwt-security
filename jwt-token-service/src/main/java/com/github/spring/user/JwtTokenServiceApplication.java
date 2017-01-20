@@ -3,12 +3,13 @@ package com.github.spring.user;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
-import com.github.spring.common.EnableSecurityFeature;
+import com.github.spring.common.filter.FilterConfiguration;
 import com.github.spring.common.token.TokenService;
 
 @SpringBootApplication
-@EnableSecurityFeature
+@Import(FilterConfiguration.class)
 public class JwtTokenServiceApplication {
 
     public static void main(String[] args) {
