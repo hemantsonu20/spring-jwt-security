@@ -11,7 +11,6 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import com.github.spring.common.config.CustomJwtTokenConverter;
-import com.github.spring.common.config.CustomWebSecurityConfigurerAdapter;
 import com.github.spring.common.config.Securityproperties;
 import com.github.spring.common.filter.FilterConfiguration;
 
@@ -30,9 +29,8 @@ import com.github.spring.common.filter.FilterConfiguration;
 @Documented
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@Import(
-        value = { Securityproperties.class, CustomJwtTokenConverter.class, FilterConfiguration.class,
-                CustomWebSecurityConfigurerAdapter.class })
+@Import(value = { Securityproperties.class, CustomJwtTokenConverter.class, FilterConfiguration.class
+         })
 public @interface EnableSecurityFeature {
 
 }
