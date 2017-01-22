@@ -1,27 +1,25 @@
 package com.github.spring.common;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 public enum Role {
 
-    SUPER_ADMIN, ADMIN, USER;
+    ROLE_ADMIN, ROLE_USER;
+
+    private static Map<String, Role> map = new HashMap<>();
+
+    static {
+        for (Role r : Role.values()) {
+            map.put(r.name(), r);
+        }
+    }
 
     @JsonCreator
     public static Role fromValue(String value) {
 
-        switch (value) {
-
-            case "SUPER_ADMIN":
-                return SUPER_ADMIN;
-
-            case "ADMIN":
-                return ADMIN;
-
-            case "USER":
-                return ADMIN;
-
-            default:
-                return null;
-        }
+        return map.get(value);
     }
 }

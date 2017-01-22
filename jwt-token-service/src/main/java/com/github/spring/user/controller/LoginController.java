@@ -21,30 +21,42 @@ public class LoginController {
 
     @Autowired
     private TokenService tokenService;
-    
+
     @Value("${jwt.token.key}")
     private String jwtSecret;
-    
+
     @Value("${jwt.user.name}")
-    private String username;
-    
+    private String user;
+
     @Value("${jwt.user.password}")
-    private String password;
-    
+    private String userPassword;
+
+    @Value("${jwt.admin.name}")
+    private String admin;
+
+    @Value("${jwt.admin.password}")
+    private String adminPassword;
 
     @RequestMapping(method = RequestMethod.POST)
     public JwtResponse login(@Valid @RequestBody LoginInfo loginInfo) {
 
-        return new JwtResponse()
-                .setJwtToken(tokenService.encodeToken( validateAndget(loginInfo), jwtSecret));
+        return new JwtResponse().setJwtToken(tokenService.encodeToken(validateAndget(loginInfo), jwtSecret));
     }
 
     private UserInfo validateAndget(LoginInfo loginInfo) {
 
-        if(loginInfo.getUsername().equals(username) && loginInfo.getPassword().equals(password)) {
-         
-            return new UserInfo().setId(username).setName(username).setUserRole(Role.ADMIN);
+        if (loginInfo.getUsername().equals(user) && loginInfo.getPassword().equals(userPassword)) {
+
+            // if user login
+            return new UserInfo().setId(user).setName(user).setUserRole(Role.ROLE_USER);
         }
-        throw new WebServiceException(HttpStatus.UNAUTHORIZED, "username or password not valid");
+        else if (loginInfo.getUsername().equals(admin) && loginInfo.getPassword().equals(adminPassword)) {
+
+            // if admin login
+            return new UserInfo().setId(admin).setName(admin).setUserRole(Role.ROLE_ADMIN);
+        }
+        else {
+            throw new WebServiceException(HttpStatus.UNAUTHORIZED, "username or password not valid");
+        }
     }
 }

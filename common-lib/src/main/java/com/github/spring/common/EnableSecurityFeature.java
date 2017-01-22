@@ -19,6 +19,10 @@ import com.github.spring.common.filter.FilterConfiguration;
  * application. This annotation imports the configuration classes class which
  * defines and declares all the required configurations.
  * 
+ * The {@link EnableResourceServer &#064;EnableResourceServer} annotation adds a
+ * filter of type OAuth2AuthenticationProcessingFilter automatically to the
+ * Spring Security filter chain.
+ * 
  * 
  * @author pratapihemant.patel
  *
