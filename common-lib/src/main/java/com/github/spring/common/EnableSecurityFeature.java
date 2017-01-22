@@ -16,8 +16,8 @@ import com.github.spring.common.filter.FilterConfiguration;
 
 /**
  * A convenient annotation to be added on main class in any spring boot
- * application. This annotation imports the {@link CommonSecurityConfig} class
- * which defines and declares all the required configuarations.
+ * application. This annotation imports the configuration classes class which
+ * defines and declares all the required configurations.
  * 
  * 
  * @author pratapihemant.patel
@@ -29,8 +29,7 @@ import com.github.spring.common.filter.FilterConfiguration;
 @Documented
 @EnableResourceServer
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-@Import(value = { Securityproperties.class, CustomJwtTokenConverter.class, FilterConfiguration.class
-         })
+@Import(value = { Securityproperties.class, CustomJwtTokenConverter.class, FilterConfiguration.class })
 public @interface EnableSecurityFeature {
 
 }
