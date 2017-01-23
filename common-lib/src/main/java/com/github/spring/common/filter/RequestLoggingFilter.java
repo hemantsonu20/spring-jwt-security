@@ -16,7 +16,7 @@ public class RequestLoggingFilter extends AbstractFilter {
 
     private boolean isStackTraceEnabled;
 
-    RequestLoggingFilter(boolean isStackTraceEnabled) {
+    public RequestLoggingFilter(boolean isStackTraceEnabled) {
 
         this.isStackTraceEnabled = isStackTraceEnabled;
     }

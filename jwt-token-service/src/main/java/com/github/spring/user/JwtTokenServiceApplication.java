@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-import com.github.spring.common.filter.FilterConfiguration;
+import com.github.spring.common.config.FilterConfiguration;
 import com.github.spring.common.token.TokenService;
 
 @SpringBootApplication
