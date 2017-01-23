@@ -8,13 +8,12 @@ import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConv
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.stereotype.Component;
 
-import com.github.spring.common.Role;
 import com.github.spring.common.UserInfo;
 
 /**
  * This bean is needed to attach our own data to the authentication.
  * 
- * @author heman
+ * @author hemant
  *
  */
 @Component
@@ -39,12 +38,17 @@ public class CustomJwtTokenConverter extends DefaultAccessTokenConverter impleme
         return auth;
     }
 
+    /**
+     * Create {@link UserInfo} bean from the jwt claim map
+     * 
+     * @param map
+     * @return
+     */
     private UserInfo getUserInfo(Map<String, ?> map) {
 
         UserInfo info = new UserInfo();
-        info.setId(getObject(map, "id"));
-        info.setName(getObject(map, "name"));
-        info.setUserRole(Role.fromValue(getObject(map, "userRole")));
+        info.setName(getObject(map, "user_name"));
+        info.setAuthorities(getObject(map, "authorities"));
         return info;
     }
 

@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * A filter to log response code returned from the service
+ * 
+ * @author pratapihemant.patel
+ *
+ */
 public class RequestLoggingFilter extends AbstractFilter {
 
     private static final Logger LOG = LoggerFactory.getLogger(RequestLoggingFilter.class);

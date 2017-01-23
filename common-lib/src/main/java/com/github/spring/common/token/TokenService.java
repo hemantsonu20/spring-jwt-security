@@ -10,6 +10,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.spring.common.UserInfo;
 import com.github.spring.common.WebServiceException;
 
+/**
+ * Class to encode and decode jwt token with jwt secret key
+ * 
+ * @author pratapihemant.patel
+ *
+ */
 public class TokenService {
 
     private ObjectMapper mapper = new ObjectMapper();

@@ -1,30 +1,26 @@
 package com.github.spring.common;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+/**
+ * A user info class which is used as jwt claim
+ * 
+ * @author pratapihemant.patel
+ *
+ */
 public class UserInfo {
 
-    private String id;
+    @JsonProperty("user_name")
     private String name;
-    private Role userRole;
-
-    public String getId() {
-
-        return id;
-    }
+    private List<String> authorities = Collections.emptyList();
 
     public String getName() {
 
         return name;
-    }
-
-    public Role getUserRole() {
-
-        return userRole;
-    }
-
-    public UserInfo setId(String id) {
-
-        this.id = id;
-        return this;
     }
 
     public UserInfo setName(String name) {
@@ -33,9 +29,14 @@ public class UserInfo {
         return this;
     }
 
-    public UserInfo setUserRole(Role userRole) {
+    public List<String> getAuthorities() {
 
-        this.userRole = userRole;
+        return Collections.unmodifiableList(authorities);
+    }
+
+    public UserInfo setAuthorities(List<String> authorities) {
+
+        this.authorities = new ArrayList<>(authorities);
         return this;
     }
 }

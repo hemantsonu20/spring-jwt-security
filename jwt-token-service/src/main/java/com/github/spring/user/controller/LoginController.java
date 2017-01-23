@@ -1,5 +1,8 @@
 package com.github.spring.user.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.spring.common.Role;
 import com.github.spring.common.UserInfo;
 import com.github.spring.common.WebServiceException;
 import com.github.spring.common.token.TokenService;
@@ -37,6 +39,9 @@ public class LoginController {
     @Value("${jwt.admin.password}")
     private String adminPassword;
 
+    List<String> userAuthorities = Arrays.asList("ROLE_USER");
+    List<String> adminAuthorities = Arrays.asList("ROLE_ADMIN", "ROLE_USER");
+
     @RequestMapping(method = RequestMethod.POST)
     public JwtResponse login(@Valid @RequestBody LoginInfo loginInfo) {
 
@@ -48,12 +53,12 @@ public class LoginController {
         if (loginInfo.getUsername().equals(user) && loginInfo.getPassword().equals(userPassword)) {
 
             // if user login
-            return new UserInfo().setId(user).setName(user).setUserRole(Role.ROLE_USER);
+            return new UserInfo().setName(user).setAuthorities(userAuthorities);
         }
         else if (loginInfo.getUsername().equals(admin) && loginInfo.getPassword().equals(adminPassword)) {
 
             // if admin login
-            return new UserInfo().setId(admin).setName(admin).setUserRole(Role.ROLE_ADMIN);
+            return new UserInfo().setName(admin).setAuthorities(adminAuthorities);
         }
         else {
             throw new WebServiceException(HttpStatus.UNAUTHORIZED, "username or password not valid");

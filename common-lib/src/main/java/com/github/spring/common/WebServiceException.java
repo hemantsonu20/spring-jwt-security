@@ -2,6 +2,12 @@ package com.github.spring.common;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * Top level exception, any custom exception should extend it
+ * 
+ * @author pratapihemant.patel
+ *
+ */
 public class WebServiceException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;

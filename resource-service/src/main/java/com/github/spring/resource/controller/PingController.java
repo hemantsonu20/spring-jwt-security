@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @RequestMapping(value = "/api")
 public class PingController {
     
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/ping", method = RequestMethod.GET)
     public PingResponse ping() {
 
         return PingResponse.INSTANCE;

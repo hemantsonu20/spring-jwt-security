@@ -11,6 +11,12 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * A common Filter implementation, any filter in the service should extend it.
+ * 
+ * @author pratapihemant.patel
+ *
+ */
 public abstract class AbstractFilter implements Filter {
 
     @Override
@@ -30,5 +36,6 @@ public abstract class AbstractFilter implements Filter {
 
     }
 
-    public abstract void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException;
+    public abstract void doFilter(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+            throws IOException, ServletException;
 }

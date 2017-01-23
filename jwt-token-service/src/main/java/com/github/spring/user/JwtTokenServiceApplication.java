@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-import com.github.spring.common.config.FilterConfiguration;
+import com.github.spring.common.CommonWebConfig;
 import com.github.spring.common.token.TokenService;
 
 @SpringBootApplication
-@Import(FilterConfiguration.class)
+@Import(CommonWebConfig.class)
 public class JwtTokenServiceApplication {
 
     public static void main(String[] args) {
